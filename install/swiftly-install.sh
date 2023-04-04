@@ -68,11 +68,6 @@ EOF
     esac
 done
 
-if ! has_command "curl" ; then
-    echo "Error: curl must be installed to download swiftly"
-    exit 1
-fi
-
 if [[ -f "/etc/os-release" ]]; then
     OS_RELEASE="/etc/os-release"
 elif [[ -f "/usr/lib/os-release" ]]; then
@@ -157,6 +152,11 @@ EOF
 
 echo "This script will install swiftly, a Swift toolchain installer and manager."
 echo ""
+
+if ! has_command "curl" ; then
+    echo "Error: curl must be installed to download swiftly"
+    exit 1
+fi
 
 DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}"
 DEFAULT_HOME_DIR="$DATA_DIR/swiftly"
@@ -253,7 +253,7 @@ echo "swiftly data files written to $HOME_DIR"
 SWIFTLY_HOME_DIR="$HOME_DIR" SWIFTLY_BIN_DIR="$BIN_DIR" "$BIN_DIR/swiftly" --version > /dev/null
 
 echo ""
-echo "swiftly has been succesfully installed!"
+echo "swiftly has been successfully installed!"
 if ! has_command "swiftly" ; then
     echo "You may have to restart your shell or add $BIN_DIR \
 to your PATH in order to access swiftly from the shell."
