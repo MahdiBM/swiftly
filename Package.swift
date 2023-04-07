@@ -22,6 +22,7 @@ let package = Package(
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 .target(name: "SwiftlyCore"),
+                .target(name: "Shell"),
                 .target(name: "LinuxPlatform", condition: .when(platforms: [.linux])),
                 .product(name: "SwiftToolsSupport-auto", package: "swift-tools-support-core"),
             ]
@@ -43,6 +44,7 @@ let package = Package(
                 .linkedLibrary("z"),
             ]
         ),
+        .target(name: "Shell"),
         .systemLibrary(
             name: "CLibArchive",
             pkgConfig: "libarchive",
